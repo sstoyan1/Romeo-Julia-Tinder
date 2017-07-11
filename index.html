@@ -1,152 +1,504 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
+	<meta charset="utf-8"/>
+	<script src="aframe.js"></script>
+	<script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
 	<script type="text/javascript">
+
+		var counter = 0;
 
 		var imgArray = new Array();
 
 		imgArray[0] = new Image();
-		imgArray[0].src = '01.jpg'
+		imgArray[0].src = '01.png'
 
 		imgArray[1] = new Image();
-		imgArray[1].src = '04.jpg'
+		imgArray[1].src = '02.png'
 
 		imgArray[2] = new Image();
-		imgArray[2].src = '02.jpg'
+		imgArray[2].src = '03.png'
 
 		imgArray[3] = new Image();
-		imgArray[3].src = '05.jpg'
+		imgArray[3].src = '04.png'
 
 		imgArray[4] = new Image();
-		imgArray[4].src = '03.jpg'
+		imgArray[4].src = '05.png'
+
+		imgArray[5] = new Image();
+		imgArray[5].src = '06.png'
+
+		imgArray[6] = new Image();
+		imgArray[6].src = '07.png'
+
+		imgArray[7] = new Image();
+		imgArray[7].src = '08.png'
+
+		imgArray[8] = new Image();
+		imgArray[8].src = '09.png'
+
+		imgArray[9] = new Image();
+		imgArray[9].src = '10.png'
+
+		imgArray[10] = new Image();
+		imgArray[10].src = '11.png'
+
+		imgArray[11] = new Image();
+		imgArray[11].src = '12.png'
+
+		imgArray[12] = new Image();
+		imgArray[12].src = '13.png'
+
+		imgArray[13] = new Image();
+		imgArray[13].src = '14.png'
+
+		imgArray[14] = new Image();
+		imgArray[14].src = '15.png'
+
+		imgArray[15] = new Image();
+		imgArray[15].src = '16.png'
+
 
 		function nextImage(element) {
 
-			var img = document.getElementById(element);
+			var img = document.querySelector(element);
 
 			for(var i = 0; i < imgArray.length;i++)
     			{
-        			if(imgArray[i].src == img.src)
+    				var currentImageSrc = imgArray[i].src;
+    				var currentImage = currentImageSrc.slice(-6);
+        			if(currentImage == img.getAttribute('src'))
        				{
             			if(i == imgArray.length - 1){
             				alert('Sei nicht so wählerisch! Versuch es erneut!');
-                			document.getElementById(element).src = imgArray[0].src;
+                			img.setAttribute('src', imgArray[0].src.slice(-6));
                 			break;
             	}
-            	document.getElementById(element).src = imgArray[i+1].src;
+            	img.setAttribute('src', imgArray[i+1].src.slice(-6));
             	break;
         	}
     	}
 	}
 
-	var answerArrayJulia1 = new Array();
-
-	answerArrayJulia1[0] = new Image();
-	answerArrayJulia1[0].src = "Julia1-1.png"
-
-	answerArrayJulia1[1] = new Image();
-	answerArrayJulia1[1].src = "Julia1-2.png"
-
-	answerArrayJulia1[2] = new Image();
-	answerArrayJulia1[2].src = "Julia1-3.png"
-
-		function choice(clicked_choice) {
+	function choice(clicked_choice) {
 	
-			var currentImageSrc = document.getElementById("suggestion").src;
+			var image = document.querySelector('#suggestion');
+			var currentImageSrc = image.getAttribute('src');
 			var currentImage = currentImageSrc.slice(-6);
 			var choice = clicked_choice;
 
 			if(choice == 'like') {
-
-				if(currentImage == "01.jpg" || currentImage == "02.jpg" || currentImage == "03.jpg") {
-					alert('Its a match!');
-					goToChat();
+				if(currentImage == "03.png" || currentImage == "07.png" || currentImage == "13.png") {
+					document.querySelector('#match').emit('match');
+					setTimeout(function() { goToChat(); }, 3000);
 				}
 				else {
-					nextImage('suggestion')
+					nextImage('#suggestion');
 				}
 
 			}
 
 			else {
-			nextImage('suggestion');
+			nextImage('#suggestion');
 
 			}
 		}
 
-		function goToChat() {
-			document.getElementById("dislike").style.visibility = "hidden";
-			document.getElementById("like").style.visibility = "hidden";
-			document.getElementById("answer01").type = "image";
-			document.getElementById("answer02").type = "image";
-			document.getElementById("answer03").type = "image";
+		function profileZoom() {
+			document.querySelector("#suggestion").emit('zoom');
 		}
 
-		function answerRomeo(chosenAnswer) {
-			var answ = chosenAnswer.slice(6);
-			var bubble = "bubble" + answ + ".png";
-			document.getElementById("bubblel1").src = bubble
-			document.getElementById("bubblel1").style.visibility = "visible";
-			setTimeout(function() { answerJulia(answ); }, 3000);
-		}
-
-		function answerJulia(fittingAnswer) {
-			var activeImg = document.getElementById("suggestion").src.slice(-6);
+		function matchDisband() {
+			var activeImg = document.querySelector("#suggestion").getAttribute('src').slice(-6);
 			var activeJulia = activeImg.slice(0, -4);
 
-			if(activeJulia == 01) {
+			if (activeJulia == 03) {
+				alert("Jules hat das Match aufgelöst!");
+			} else {
+				alert("Julia hat das Match aufgelöst!")
+			} 
+			goToSwipe();
+		}
+
+		function goToSwipe() {
+			document.querySelector("#dislike").setAttribute('visible', true);
+			document.querySelector("#like").setAttribute('visible', true);
+			document.querySelector("#R1A").setAttribute('visible', false);
+			document.querySelector("#R1B").setAttribute('visible', false);
+			document.querySelector("#R1C").setAttribute('visible', false);
+			document.querySelector("#R2A").setAttribute('visible', false);
+			document.querySelector("#R2B").setAttribute('visible', false);
+			document.querySelector("#R2C").setAttribute('visible', false);
+			document.querySelector("#R3A").setAttribute('visible', false);
+			document.querySelector("#R3B").setAttribute('visible', false);
+			document.querySelector("#R3C").setAttribute('visible', false);
+			document.querySelector("#R4A").setAttribute('visible', false);
+			document.querySelector("#R4B").setAttribute('visible', false);
+			document.querySelector("#R4C").setAttribute('visible', false);
+			document.querySelector("#bubbler1").setAttribute('visible', false);
+			document.querySelector("#bubbler2").setAttribute('visible', false);
+			document.querySelector("#bubblej1").setAttribute('visible', false);
+			document.querySelector("#bubblej2").setAttribute('visible', false);
+			nextImage('#suggestion');
+		}
+
+		function goToChat() {
+			document.querySelector("#dislike").setAttribute('visible', false);
+			document.querySelector("#like").setAttribute('visible', false);
+			document.querySelector("#R1A").setAttribute('visible', true);
+			document.querySelector("#R1B").setAttribute('visible', true);
+			document.querySelector("#R1C").setAttribute('visible', true);
+		}
+
+		function goToChat2() {
+			document.querySelector("#R1A").setAttribute('visible', false);
+			document.querySelector("#R1B").setAttribute('visible', false);
+			document.querySelector("#R1C").setAttribute('visible', false);
+			document.querySelector("#R2A").setAttribute('visible', true);
+			document.querySelector("#R2B").setAttribute('visible', true);
+			document.querySelector("#R2C").setAttribute('visible', true);
+		}
+
+		function goToChat3() {
+			document.querySelector("#R2A").setAttribute('visible', false);
+			document.querySelector("#R2B").setAttribute('visible', false);
+			document.querySelector("#R2C").setAttribute('visible', false);
+			document.querySelector("#R3A").setAttribute('visible', true);
+			document.querySelector("#R3B").setAttribute('visible', true);
+			document.querySelector("#R3C").setAttribute('visible', true);
+		}
+
+		function goToChat4() {
+			document.querySelector("#R3A").setAttribute('visible', false);
+			document.querySelector("#R3B").setAttribute('visible', false);
+			document.querySelector("#R3C").setAttribute('visible', false);
+			document.querySelector("#R4A").setAttribute('visible', true);
+			document.querySelector("#R4B").setAttribute('visible', true);
+			document.querySelector("#R4C").setAttribute('visible', true);
+		}
+
+		function goToRoom() {
+			document.querySelector("#R4A").setAttribute('visible', false);
+			document.querySelector("#R4B").setAttribute('visible', false);
+			document.querySelector("#R4C").setAttribute('visible', false);
+			document.querySelector("#bubbler1").setAttribute('visible', false);
+			document.querySelector("#bubbler2").setAttribute('visible', false);
+			document.querySelector("#bubblej1").setAttribute('visible', false);
+			document.querySelector("#bubblej2").setAttribute('visible', false);
+			document.querySelector("#suggestion").setAttribute('visible', false);
+			document.querySelector('#camera').emit('goToRoom');
+		}
+
+		function answerRomeo1(chosenAnswer) {
+			var answer = chosenAnswer;
+			document.querySelector("#bubbler1").setAttribute('src', "Bubbles/Romeo/" + answer + ".png")
+			document.querySelector("#bubbler1").setAttribute('visible', true);
+			document.querySelector("#R1A").setAttribute('onclick', "")
+			document.querySelector("#R1B").setAttribute('onclick', "")
+			document.querySelector("#R1C").setAttribute('onclick', "")
+			setTimeout(function() { answerJulia1(answer); }, 3000);
+		}
+
+		function answerJulia1(fittingAnswer) {
+			var activeImg = document.querySelector("#suggestion").getAttribute('src').slice(-6);
+			var activeJulia = activeImg.slice(0, -4);
+
+			if(activeJulia == 03) {
 				switch (fittingAnswer) {
-					case "01":
-						document.getElementById("bubbler1").src = answerArrayJulia1[0].src;
-						document.getElementById("bubbler1").style.visibility = "visible";
+					case "R1A":
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/J1B_A.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						counter = counter + 1;
+						goToChat2();
 						break;
-					case "02":
-						alert("Wrong Answer");
+					case "R1B":
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/J1B.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						goToChat2();
 						break;
-					case "03":
-						alert("Wrong Answer");
+					case "R1C":
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/J1B_C.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						counter = counter + 1;
+						goToChat2();
 						break;
 				}
-			} else if(activeJulia == 02) {
+			} else if(activeJulia == 07) {
 				switch (fittingAnswer) {
-					case "01":
-						alert("Wrong Answer");
+					case "R1A":
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/J1A.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						goToChat2();
 						break;
-					case "02":
-						document.getElementById("bubbler1").src = answerArrayJulia2[0].src;
-						document.getElementById("bubbler1").style.visibility = "visible";
-						break;
-					case "03":
-						alert("Wrong Answer");
-						break;			}
+					default:
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/JA_n.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+				}
 
 			} else {
+						document.querySelector("#bubblej1").setAttribute('src', "Bubbles/Julia/J1C.png");
+						document.querySelector("#bubblej1").setAttribute('visible', true);
+						goToChat2();
+			}
+		}
+
+		function answerRomeo2(chosenAnswer) {
+			var answer = chosenAnswer;
+			document.querySelector("#bubbler2").setAttribute('src', "Bubbles/Romeo/" + answer + ".png")
+			document.querySelector("#bubbler2").setAttribute('visible', true);
+			document.querySelector("#R2A").setAttribute('onclick', "")
+			document.querySelector("#R2B").setAttribute('onclick', "")
+			document.querySelector("#R2C").setAttribute('onclick', "")
+			setTimeout(function() { answerJulia2(answer); }, 3000);
+		}
+
+		function answerJulia2(fittingAnswer) {
+			var activeImg = document.querySelector("#suggestion").getAttribute('src').slice(-6);
+			var activeJulia = activeImg.slice(0, -4);
+
+			if(activeJulia == 03) {
 				switch (fittingAnswer) {
-					case "01":
-						alert("Wrong Answer");
+					case "R2A":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J2B_A.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToChat3();
+						}
 						break;
-					case "02":
-						alert("Wrong Answer");
+					case "R2B":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J2B.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat3();
 						break;
-					case "03":
-						document.getElementById("bubbler1").src = answerArrayJulia3[0].src;
-						document.getElementById("bubbler1").style.visibility = "visible";
-						break;			}
+					case "R2C":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J2B_C.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToChat3();
+						}
+						break;
+				}
+			} else if(activeJulia == 07) {
+				switch (fittingAnswer) {
+					case "R2A":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J2A.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat3();
+						break;
+					default:
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JA_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+				}
+
+			} else {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J2C.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat3();
+			}
+		}
+
+		function answerRomeo3(chosenAnswer) {
+			var answer = chosenAnswer;
+			var bubbler1 = document.querySelector("#bubbler2").getAttribute('src');
+			var bubblej1 = document.querySelector("#bubblej2").getAttribute('src');
+			document.querySelector("#bubbler1").setAttribute('src', bubbler1)
+			document.querySelector("#bubbler2").setAttribute('src', "Bubbles/Romeo/" + answer + ".png");
+			document.querySelector("#R3A").setAttribute('onclick', "")
+			document.querySelector("#R3B").setAttribute('onclick', "")
+			document.querySelector("#R3C").setAttribute('onclick', "")
+			setTimeout(function() { answerJulia3(answer); }, 3000);
+			setTimeout(function () { document.querySelector("#bubblej1").setAttribute('src', bubblej1); }, 3000);
+		}
+
+		function answerJulia3(fittingAnswer) {
+			var activeImg = document.querySelector("#suggestion").getAttribute('src').slice(-6);
+			var activeJulia = activeImg.slice(0, -4);
+
+			if(activeJulia == 03) {
+				switch (fittingAnswer) {
+					case "R3A":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J3B_A.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToChat4();
+						}
+						break;
+					case "R3B":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J3B.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat4();
+						break;
+					case "R3C":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J3B_C.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToChat4();
+						}
+						break;
+				}
+			} else if(activeJulia == 07) {
+				switch (fittingAnswer) {
+					case "R3A":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J3A.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat4();
+						break;
+					default:
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JA_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+				}
+
+			} else {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J3C.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToChat4();
+			}
+		}
+
+		function answerRomeo4(chosenAnswer) {
+			var answer = chosenAnswer;
+			var bubbler1 = document.querySelector("#bubbler2").getAttribute('src');
+			var bubblej1 = document.querySelector("#bubblej2").getAttribute('src');
+			document.querySelector("#bubbler1").setAttribute('src', bubbler1)
+			document.querySelector("#bubbler2").setAttribute('src', "Bubbles/Romeo/" + answer + ".png");
+			document.querySelector("#R4A").setAttribute('onclick', "")
+			document.querySelector("#R4B").setAttribute('onclick', "")
+			document.querySelector("#R4C").setAttribute('onclick', "")
+			setTimeout(function() { answerJulia4(answer); }, 3000);
+			setTimeout(function() { document.querySelector("#bubblej1").setAttribute('src', bubblej1); }, 3000);
+		}
+
+		function answerJulia4(fittingAnswer) {
+			var activeImg = document.querySelector("#suggestion").getAttribute('src').slice(-6);
+			var activeJulia = activeImg.slice(0, -4);
+
+			if(activeJulia == 03) {
+				switch (fittingAnswer) {
+					case "R4A":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J4B_A.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToRoom();
+						}
+						break;
+					case "R4B":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J4B.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToRoom();
+						break;
+					case "R4C":
+						if (counter > 0) {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JB_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+						} else {
+							document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J4B_C.png");
+							document.querySelector("#bubblej2").setAttribute('visible', true);
+							counter = counter + 1;
+							goToRoom();
+						}
+						break;
+				}
+			} else if(activeJulia == 07) {
+				switch (fittingAnswer) {
+					case "R4A":
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J4A.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToRoom();
+						break;
+					default:
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/JA_n.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						setTimeout(function() { matchDisband(); }, 3000);
+				}
+
+			} else {
+						document.querySelector("#bubblej2").setAttribute('src', "Bubbles/Julia/J4C.png");
+						document.querySelector("#bubblej2").setAttribute('visible', true);
+						goToRoom();
 			}
 		}
 	</script>
 </head>
 
 <body>
-	<img src="bubble01.png" id="bubblel1" style="visibility: hidden">
-	<img src="01.jpg" id="suggestion" style="width:400px;height:300px;">
-	<img src="bubble01.png" id="bubbler1" style="visibility: hidden"><br>
-	<input id="dislike" type="image" src="Dislike.png" alt="Dislike" value="dislike" onclick="choice(this.value)">
-	<input id ="like" type="image" src="Like.png" alt="Like" value="like" onclick="choice(this.value)">
-	<input id="answer01" type="hidden" src="answer01.jpg" alt="answer01" value="answer01" onclick="answerRomeo(this.value)">
-	<input id="answer02" type="hidden" src="answer02.jpg" alt="answer02" value="answer02" onclick="answerRomeo(this.value)">
-	<input id="answer03" type="hidden" src="answer03.jpg" alt="answer03" value="answer03" onclick="answerRomeo(this.value)">
 
+	<a-scene>
+  		<a-assets>
+    		<a-asset-item id="umgebung_obj" src="umgebung.obj"></a-asset-item>
+    		<a-asset-item id="umgebung_mtl" src="umgebung.mtl"></a-asset-item>
+  		</a-assets>
+  
+  		<a-entity id="camera" position="-7.5 0 8.5">
+  			<a-animation attribute="position" to="-7.5 6.632 0.989" begin="goToRoom" dur="5000"></a-animation>
+  			<a-camera>
+  				<a-entity cursor="fuse: true; fuseTimeout: 2000"
+          			position="0 0 -1"
+          			geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          			material="color: black; shader: flat">
+  		  			<a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+               		fill="backwards" dur="2000" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+				</a-entity>
+  			</a-camera>
+  		</a-entity>
+
+  		<a-sky src="sky.jpg"></a-sky>
+  		<a-entity obj-model="obj: #umgebung_obj; mtl: #umgebung_mtl" scale = "0.1 0.1 0.1" position = "0 0 0"></a-entity>
+  		<a-image id="suggestion" src="01.png" position="-7.8 10.9 -2.85" height="8.04" width="6" 
+  		   event-set__enter="_event: mouseenter; position: -7.8 5.329 3.209"
+           event-set__leave="_event: mouseleave; position: -7.8 10.9 -2.85">
+        </a-image>
+  		<a-image id ="like" src="like.png" position="-5.257 4.865 -1.169" scale="1.69 1.69 1.69" onclick="choice(this.id)"></a-image>
+  		<a-image id ="dislike" src="dislike.png" position="-10.036 4.865 -1.169" scale="1.69 1.69 1.69" onclick="choice(this.id)"></a-image>
+  		<a-image id="match" src="ItsaMatch.png" position="-7.624 8.5 0.427" scale="2.6 2.6 2.6" visible="false">
+  			<a-animation attribute="visible" duration="500" to="true" begin="match"></a-animation>
+  			<a-animation attribute="scale" duration="1000" to="4.5 4.5 4.5" begin="match"></a-animation>
+  			<a-animation attribute="visible" delay ="3000" duration="500" to="false" begin="match"></a-animation>
+  		</a-image>
+  		<a-image id="R1A" src="Bubbles/Romeo/Box_R1A.png" width="3.14" height="1.98" position="-11.48 4.21" visible="false" onclick="answerRomeo1(this.id)"></a-image>
+  		<a-image id="R1B" src="Bubbles/Romeo/Box_R1B.png" width="3.14" height="1.98" position="-8.18 4.21" visible="false" onclick="answerRomeo1(this.id)"></a-image>
+  		<a-image id="R1C" src="Bubbles/Romeo/Box_R1C.png" width="3.14" height="1.98" position="-4.88 4.21" visible="false" onclick="answerRomeo1(this.id)"></a-image>
+  		<a-image id="R2A" src="Bubbles/Romeo/Box_R2A.png" width="3.14" height="1.98" position="-11.48 4.21" visible="false" onclick="answerRomeo2(this.id)"></a-image>
+  		<a-image id="R2B" src="Bubbles/Romeo/Box_R2B.png" width="3.14" height="1.98" position="-8.18 4.21" visible="false" onclick="answerRomeo2(this.id)"></a-image>
+  		<a-image id="R2C" src="Bubbles/Romeo/Box_R2C.png" width="3.14" height="1.98" position="-4.88 4.21" visible="false" onclick="answerRomeo2(this.id)"></a-image>
+  		<a-image id="R3A" src="Bubbles/Romeo/Box_R3A.png" width="3.14" height="1.98" position="-11.48 4.21" visible="false" onclick="answerRomeo3(this.id)"></a-image>
+  		<a-image id="R3B" src="Bubbles/Romeo/Box_R3B.png" width="3.14" height="1.98" position="-8.18 4.21" visible="false" onclick="answerRomeo3(this.id)"></a-image>
+  		<a-image id="R3C" src="Bubbles/Romeo/Box_R3C.png" width="3.14" height="1.98" position="-4.88 4.21" visible="false" onclick="answerRomeo3(this.id)"></a-image>
+  		<a-image id="R4A" src="Bubbles/Romeo/Box_R4A.png" width="3.14" height="1.98" position="-11.48 4.21" visible="false" onclick="answerRomeo4(this.id)"></a-image>
+  		<a-image id="R4B" src="Bubbles/Romeo/Box_R4B.png" width="3.14" height="1.98" position="-8.18 4.21" visible="false" onclick="answerRomeo4(this.id)"></a-image>
+  		<a-image id="R4C" src="Bubbles/Romeo/Box_R4C.png" width="3.14" height="1.98" position="-4.88 4.21" visible="false" onclick="answerRomeo4(this.id)"></a-image>
+  		<a-image id="bubbler1" src="" scale="11 11 11" position="-14.9 13.237 -2.75" visible="false"></a-image>
+  		<a-image id="bubblej1" src="" scale="11 11 11" position="0.25 13.237 -2.75" visible="false"></a-image>
+  		<a-image id="bubbler2" src="" scale="11 11 11" position="-14.9 9.237 -2.75" visible="false"></a-image>
+  		<a-image id="bubblej2" src="" scale="11 11 11" position="0.25 9.237 -2.75" visible="false"></a-image>
+</a-scene>
 
 </body>
-</html>
