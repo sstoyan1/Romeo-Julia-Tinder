@@ -1,0 +1,276 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 13.06.2017 05:02:29
+
+newmtl Standard_1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl wire_143225087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.5608 0.8824 0.3412
+	Kd 0.5608 0.8824 0.3412
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_166229229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6510 0.8980 0.8980
+	Kd 0.6510 0.8980 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_148177027
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.5804 0.6941 0.1059
+	Kd 0.5804 0.6941 0.1059
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_184155229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7216 0.6078 0.8980
+	Kd 0.7216 0.6078 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_108008136
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.4235 0.0314 0.5333
+	Kd 0.4235 0.0314 0.5333
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_088177027
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3451 0.6941 0.1059
+	Kd 0.3451 0.6941 0.1059
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_153228184
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6000 0.8941 0.7216
+	Kd 0.6000 0.8941 0.7216
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_229154215
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8980 0.6039 0.8431
+	Kd 0.8980 0.6039 0.8431
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_196088225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7686 0.3451 0.8824
+	Kd 0.7686 0.3451 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_154185229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6039 0.7255 0.8980
+	Kd 0.6039 0.7255 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_088088225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3451 0.3451 0.8824
+	Kd 0.3451 0.3451 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_088144225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3451 0.5647 0.8824
+	Kd 0.3451 0.5647 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_105125083
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.4118 0.4902 0.3255
+	Kd 0.4118 0.4902 0.3255
+	Ks 0.3500 0.3500 0.3500
+
+newmtl argent
+	Ns 40.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.9490 1.0000 1.0000
+	Kd 0.9490 1.0000 1.0000
+	Ks 1.6650 1.6650 1.6650
+	Ke 0.0000 0.0000 0.0000
+	map_refl Map__2_Raytrace.tga
+
+newmtl or
+	Ns 43.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 0.7333 0.0000
+	Kd 1.0000 0.7333 0.0000
+	Ks 1.8400 1.8400 1.8400
+	Ke 0.1000 0.0733 0.0000
+	map_refl Map__1_Raytrace.tga
+
+newmtl lumiere
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 1.0000 1.0000 0.3725
+
+newmtl diams
+	Ns 26.0000
+	Ni 1.5000
+	d 0.7000
+	Tr 0.3000
+	Tf 0.7000 0.7000 0.7000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 2.1315 2.8599 3.0623
+	Ke 0.0000 0.0000 0.0000
+	map_Ks Map__14_Planet.tga
+	map_d Map__6_Translucency.tga
+
+newmtl 01___Default
+	Ns 13.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.6930 0.6930 0.6930
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\ex4mple\Documents\3dsMax\scenes\dark-grey-concrete-texture-1462959592z67.jpg
+	map_Kd C:\Users\ex4mple\Documents\3dsMax\scenes\dark-grey-concrete-texture-1462959592z67.jpg
+
+newmtl 08___Default
+	Ns 60.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.2610 0.2610 0.2610
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\ex4mple\Desktop\VR\pexels-photo-255502.jpeg
+	map_Kd C:\Users\ex4mple\Desktop\VR\pexels-photo-255502.jpeg
+
+newmtl wire_113135006
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.4431 0.5294 0.0235
+	Kd 0.4431 0.5294 0.0235
+	Ks 0.3500 0.3500 0.3500
+
+newmtl 02___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\ex4mple\Desktop\VR\wildtextures-cracking-paint-wall-III.jpg
+	map_Kd C:\Users\ex4mple\Desktop\VR\wildtextures-cracking-paint-wall-III.jpg
+
+newmtl 15___Default
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.0510 0.0196 0.0157
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Roof_shingles
+	Ns 1.0004
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.1796 0.1796 0.1796
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\ex4mple\Documents\3dsMax\scenes\roof-fbx\roof.fbm\Shingles.jpg
+	map_Kd C:\Users\ex4mple\Documents\3dsMax\scenes\roof-fbx\roof.fbm\Shingles.jpg
+	map_bump C:\Users\ex4mple\Documents\3dsMax\scenes\roof-fbx\roof.fbm\Shingles bump.jpg
+	bump C:\Users\ex4mple\Documents\3dsMax\scenes\roof-fbx\roof.fbm\Shingles bump.jpg

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+
+		var imgArray = new Array();
+
+		imgArray[0] = new Image();
+		imgArray[0].src = '01.jpg'
+
+		imgArray[1] = new Image();
+		imgArray[1].src = '04.jpg'
+
+		imgArray[2] = new Image();
+		imgArray[2].src = '02.jpg'
+
+		imgArray[3] = new Image();
+		imgArray[3].src = '05.jpg'
+
+		imgArray[4] = new Image();
+		imgArray[4].src = '03.jpg'
+
+		function nextImage(element) {
+
+			var img = document.getElementById(element);
+
+			for(var i = 0; i < imgArray.length;i++)
+    			{
+        			if(imgArray[i].src == img.src)
+       				{
+            			if(i == imgArray.length - 1){
+            				alert('Sei nicht so wählerisch! Versuch es erneut!');
+                			document.getElementById(element).src = imgArray[0].src;
+                			break;
+            	}
+            	document.getElementById(element).src = imgArray[i+1].src;
+            	break;
+        	}
+    	}
+	}
+
+	var answerArrayJulia1 = new Array();
+
+	answerArrayJulia1[0] = new Image();
+	answerArrayJulia1[0].src = "Julia1-1.png"
+
+	answerArrayJulia1[1] = new Image();
+	answerArrayJulia1[1].src = "Julia1-2.png"
+
+	answerArrayJulia1[2] = new Image();
+	answerArrayJulia1[2].src = "Julia1-3.png"
+
+		function choice(clicked_choice) {
+	
+			var currentImageSrc = document.getElementById("suggestion").src;
+			var currentImage = currentImageSrc.slice(-6);
+			var choice = clicked_choice;
+
+			if(choice == 'like') {
+
+				if(currentImage == "01.jpg" || currentImage == "02.jpg" || currentImage == "03.jpg") {
+					alert('Its a match!');
+					goToChat();
+				}
+				else {
+					nextImage('suggestion')
+				}
+
+			}
+
+			else {
+			nextImage('suggestion');
+
+			}
+		}
+
+		function goToChat() {
+			document.getElementById("dislike").style.visibility = "hidden";
+			document.getElementById("like").style.visibility = "hidden";
+			document.getElementById("answer01").type = "image";
+			document.getElementById("answer02").type = "image";
+			document.getElementById("answer03").type = "image";
+		}
+
+		function answerRomeo(chosenAnswer) {
+			var answ = chosenAnswer.slice(6);
+			var bubble = "bubble" + answ + ".png";
+			document.getElementById("bubblel1").src = bubble
+			document.getElementById("bubblel1").style.visibility = "visible";
+			setTimeout(function() { answerJulia(answ); }, 3000);
+		}
+
+		function answerJulia(fittingAnswer) {
+			var activeImg = document.getElementById("suggestion").src.slice(-6);
+			var activeJulia = activeImg.slice(0, -4);
+
+			if(activeJulia == 01) {
+				switch (fittingAnswer) {
+					case "01":
+						document.getElementById("bubbler1").src = answerArrayJulia1[0].src;
+						document.getElementById("bubbler1").style.visibility = "visible";
+						break;
+					case "02":
+						alert("Wrong Answer");
+						break;
+					case "03":
+						alert("Wrong Answer");
+						break;
+				}
+			} else if(activeJulia == 02) {
+				switch (fittingAnswer) {
+					case "01":
+						alert("Wrong Answer");
+						break;
+					case "02":
+						document.getElementById("bubbler1").src = answerArrayJulia2[0].src;
+						document.getElementById("bubbler1").style.visibility = "visible";
+						break;
+					case "03":
+						alert("Wrong Answer");
+						break;			}
+
+			} else {
+				switch (fittingAnswer) {
+					case "01":
+						alert("Wrong Answer");
+						break;
+					case "02":
+						alert("Wrong Answer");
+						break;
+					case "03":
+						document.getElementById("bubbler1").src = answerArrayJulia3[0].src;
+						document.getElementById("bubbler1").style.visibility = "visible";
+						break;			}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<img src="bubble01.png" id="bubblel1" style="visibility: hidden">
+	<img src="01.jpg" id="suggestion" style="width:400px;height:300px;">
+	<img src="bubble01.png" id="bubbler1" style="visibility: hidden"><br>
+	<input id="dislike" type="image" src="Dislike.png" alt="Dislike" value="dislike" onclick="choice(this.value)">
+	<input id ="like" type="image" src="Like.png" alt="Like" value="like" onclick="choice(this.value)">
+	<input id="answer01" type="hidden" src="answer01.jpg" alt="answer01" value="answer01" onclick="answerRomeo(this.value)">
+	<input id="answer02" type="hidden" src="answer02.jpg" alt="answer02" value="answer02" onclick="answerRomeo(this.value)">
+	<input id="answer03" type="hidden" src="answer03.jpg" alt="answer03" value="answer03" onclick="answerRomeo(this.value)">
+
+
+</body>
+</html>
